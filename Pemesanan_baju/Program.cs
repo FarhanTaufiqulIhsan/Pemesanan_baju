@@ -72,8 +72,10 @@ namespace Pemesanan_baju
                                             case '2':
                                                 {
                                                     Console.Clear();
-                                                    Console.WriteLine("Mengupdate Data Produk");
-                                                    Console.WriteLine("");
+                                                    Console.WriteLine("Data Produk\n");
+                                                    Console.WriteLine();
+                                                    pr.baca(conn);
+                                                    conn.Close();
                                                 }
                                                 break;
                                         }
@@ -109,6 +111,20 @@ namespace Pemesanan_baju
             cmd.Parameters.Add(new SqlParameter("Harga_Produk", Harga_Produk));
             cmd.ExecuteNonQuery();
             Console.WriteLine("Data Berhasil Ditambahkan");
+        }
+
+        public void baca(SqlConnection con)
+        {
+            SqlCommand cmd = new SqlCommand("Select * From dbo.Produk", con);
+            SqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                for (int i = 0; i < r.FieldCount; i++)
+                {
+                    Console.WriteLine(r.GetValue(i));
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
