@@ -45,6 +45,30 @@ namespace Pemesanan_baju
                                         Console.WriteLine("2. Mengupdate Data");
                                         Console.WriteLine("3. Menghapus Data");
                                         Console.WriteLine("\nMasukkan pilihan (1-3): ");
+                                        char ch = Convert.ToChar(Console.ReadLine());
+                                        switch (ch)
+                                        {
+                                            case '1':
+                                                {
+                                                    Console.Clear();
+                                                    Console.WriteLine("Input Data Produk");
+                                                    Console.WriteLine("Masukkan ID_Produk : ");
+                                                    string ID_Produk = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Nama_Produk: ");
+                                                    string Nama_Produk = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Harga_Produk: ");
+                                                    string Harga_Produk = Console.ReadLine();
+                                                    try
+                                                    {
+                                                        pr.insert(ID_Produk, Nama_Produk, Harga_Produk, conn);
+                                                        conn.Close();
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("\nAnda tidak memiliki akses untuk menambah data");
+                                                    }
+                                                }
+                                        }
                                     }
                                 }
                             }
