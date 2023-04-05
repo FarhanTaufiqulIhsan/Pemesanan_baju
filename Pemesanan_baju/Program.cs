@@ -68,6 +68,11 @@ namespace Pemesanan_baju
                                                         Console.WriteLine("\nAnda tidak memiliki akses untuk menambah data");
                                                     }
                                                 }
+                                                break;
+                                            case '2':
+                                                {
+                                                    
+                                                }
                                         }
                                     }
                                 }
@@ -75,6 +80,21 @@ namespace Pemesanan_baju
                     }
                 }
             }
+        }
+        public void insert(string ID_Produk, string Nama_Produk, string Harga_Produk,
+            SqlConnection con)
+        {
+            string str = "";
+            str = "insert into dbo.Produk (ID_Produk,Nama_Produk,Harga_Produk)"
+                + " values(@ID_Produk,@Nama_Produk,@Harga_Produk)";
+            SqlCommand cmd = new SqlCommand(str, con);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            cmd.Parameters.Add(new SqlParameter("ID_Produk", ID_Produk));
+            cmd.Parameters.Add(new SqlParameter("Nama_Produk", Nama_Produk));
+            cmd.Parameters.Add(new SqlParameter("Harga_Produk", Harga_Produk));
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Data Berhasil Ditambahkan");
         }
     }
 }
