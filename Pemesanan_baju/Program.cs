@@ -71,13 +71,27 @@ namespace Pemesanan_baju
                                                 break;
                                             case '2':
                                                 {
-                                                    
+                                                    Console.Clear();
+                                                    Console.WriteLine("Mengupdate Data Produk");
+                                                    Console.WriteLine("");
                                                 }
+                                                break;
                                         }
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("\nCheck for the value entered.");
                                     }
                                 }
                             }
                     }
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Tidak Dapat Mengakses Database Menggunakan User Tersebut\n");
+                    Console.ResetColor();
                 }
             }
         }
